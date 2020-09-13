@@ -8,7 +8,7 @@ import java.util.Scanner;
 // Dette 2d array kan vidergives til MazeBuilder som benytter det til at bygge labyrinten.
 public class DatasetLoader {
 
-    public static int[][] get2dArrayFromDataset(File file) {
+    public static int[][] get2DListFromFile(File file) {
         List<List<Integer>> array2d = new ArrayList<List<Integer>>();
         Scanner scannerFile;
 
@@ -21,6 +21,7 @@ public class DatasetLoader {
                 List<Integer> arrayTemp = new ArrayList<>();
 
                 String[] integers = lineFromFile.split(",\\s");
+
                 for (String number : integers){
                     try{
                         arrayTemp.add(Integer.parseInt(number));
@@ -28,6 +29,8 @@ public class DatasetLoader {
                         e.printStackTrace();
                     }
                 }
+
+                arrayTemp.remove(0);
                 array2d.add(arrayTemp);
             }
 
@@ -38,26 +41,44 @@ public class DatasetLoader {
         return (int[][]) array2d.toArray();
     }
 
-    // variabel der indeholder det endelige 2d array
-    // find størrelsen på "master array" samt hvert array i dette via scanner objektet
-
-    /*
-    public static int[][] getPrimitive2dArrayFromDataSet(File file) {
+    // todo
+    public static int[][] get2DArrayFromFile(File file) {
         int[][] array2d;
         Scanner scannerFile;
-        int masterArraySize;
-        int singleArraySize;
+        int rowSize = 0;
+        int columnSize = 0;
 
         try {
             scannerFile = new Scanner(file);
-            singleArraySize = scannerFile.nextInt();
 
+            columnSize = scannerFile.nextInt();
+            scannerFile.nextLine();
+
+            rowSize = scannerFile.nextLine().split(", ").length - 1;
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        array2d = new int[rowSize][columnSize];
+
+        try {
+            scannerFile = new Scanner(file).useDelimiter("\\s*,\\s*");
+
+            scannerFile.nextLine();
+
+            while(scannerFile.hasNext()) {
+                for(int i = 0; i < rowSize; i++) {
+                    for(int j = 0; j < columnSize; i++) {
+                        scannerFile.nextInt();
+
+                        array2d[i][j] = scannerFile.nextInt();
+                    }
+                }
+            }
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
 
         return array2d;
     }
-
-     */
 }

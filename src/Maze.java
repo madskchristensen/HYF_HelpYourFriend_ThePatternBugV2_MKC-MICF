@@ -5,8 +5,4 @@ public class Maze {
     public Maze() {
 
     }
-
-    public void initialize() {
-
-    }
 }
