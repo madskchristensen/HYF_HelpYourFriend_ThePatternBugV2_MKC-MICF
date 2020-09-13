@@ -1,9 +1,9 @@
+// Repræsenterer en labyrint.
 public class Maze {
-    private Node[][] nodeArray;
-    private Node lastNode;
+    private Field[][] fieldArray;
 
-    public Maze(int array1Size, int array2Size) {
-        nodeArray = new Node[array1Size][array2Size];
+    public Maze() {
+
     }
 
     public void initialize() {

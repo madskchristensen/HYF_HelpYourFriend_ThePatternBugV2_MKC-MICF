@@ -1,11 +1,11 @@
+import java.io.File;
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
-        Maze maze = new Maze(6, 5);
+        int[][] array = DatasetLoader.get2dArrayFromDataset(new File("resources\\data1.txt"));
 
-    }
-
-    public static void go(Maze maze) {
-
+        System.out.println(Arrays.deepToString(array));
     }
 }

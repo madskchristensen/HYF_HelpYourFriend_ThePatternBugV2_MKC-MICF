@@ -1,3 +1,6 @@
+// Har til ansvar at repræsentere en node, som skal bruges til navigering i labyrinten.
+// Det er noden som har x og y koordinatet.
+// Noden gemmes i et field og via noden kan man derfor finde x og y koordinatet for et field.
 public class Node {
     private int x;
     private int y;
