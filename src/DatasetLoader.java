@@ -59,19 +59,19 @@ public class DatasetLoader {
             e.printStackTrace();
         }
 
-        array2d = new int[rowSize][columnSize];
+        array2d = new int[columnSize][rowSize];
 
         try {
-            scannerFile = new Scanner(file).useDelimiter("\\s*,\\s*");
+            scannerFile = new Scanner(file).useDelimiter("\\s*,\\s*|\\s*\\n\\s*");
 
             scannerFile.nextLine();
 
             while(scannerFile.hasNext()) {
-                for(int i = 0; i < rowSize; i++) {
-                    for(int j = 0; j < columnSize; i++) {
-                        scannerFile.nextInt();
-
-                        array2d[i][j] = scannerFile.nextInt();
+                for(int i = 0; i < columnSize; i++) {
+                    scannerFile.nextInt();
+                    for(int j = 0; j < rowSize; j++) {
+                        int integerToAdd = scannerFile.nextInt();
+                        array2d[i][j] = integerToAdd;
                     }
                 }
             }
